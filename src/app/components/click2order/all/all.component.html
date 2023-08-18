@@ -1,0 +1,51 @@
+<ngx-ui-loader 
+[pbColor]="'#0A60C2'"  
+[bgsColor]="'#0A60C2'"
+[fgsColor]="'#0A60C2'"
+[text]="'Cargando...'"
+[fgsSize]="15"
+[fgsType]= "'cube-grid'"
+[textColor]="'#0A60C2'"
+[overlayColor]="' rgba(255,255,255,0.8)'">
+</ngx-ui-loader>
+ <div class="content-body">
+            <div class="container-fluid">
+                <div class="page-titles">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Inventario</a></li>
+						<li class="breadcrumb-item active"><a href="javascript:void(0)">Productos</a></li>
+                        <a routerLink="../c2oAdd" class="btn btn-primary light btn-md ml-auto"><i class="fa fa-plus scale5 mr-3"></i>Agregar producto</a>
+                         
+                    </ol>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6" *ngFor="let product of yeoman.all;let i = index"  (click)="setPreview(i)" style="cursor: pointer;" [hidden]="product.images[0]===undefined" >
+                        <div class="card" >
+                            <div class="card-body">
+                                <div class="new-arrival-product">
+                                    <div class="new-arrivals-img-contnent">
+                                        <img class="img-fluid" src="assets/gymove/images/product/1.jpg" alt="" *ngIf="product.images[0]===undefined">
+                                        <img class="img-fluid" src="{{product.images[0]}}" alt="" *ngIf="product.images[0]!==undefined">
+                                  
+                                    </div>
+                                    <div class="new-arrival-content text-center mt-3">
+                                        <h4><a >{{product.name}}</a></h4>
+                                        <ul class="star-rating">
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star-half-empty"></i></li>
+                                            <li><i class="fa fa-star-half-empty"></i></li>
+                                        </ul>
+                                        <span class="price">${{product.price}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+           
+                </div>
+            </div>
+        </div>

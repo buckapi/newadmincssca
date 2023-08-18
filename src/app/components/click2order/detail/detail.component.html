@@ -1,0 +1,161 @@
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="../c2oAll">Inventario</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Detalle</a></li>
+                <!-- <a (click)="delete()"class="btn btn-danger light btn-md ml-auto"><i class="fa fa-trash scale5 mr-3"></i>Borrar</a> -->
+                <button [swal]="
+                {title: '<strong>Borrar producto <u></u></strong>', icon: 'error',
+                html: 'Confirma que desea eliminar este producto ?',
+                showCloseButton: true,
+                showCancelButton: true,
+                cancelButtonColor: '#101554',
+                confirmButtonColor: '#ff3366',
+                focusConfirm: true,
+                confirmButtonText:' Borrar',
+                confirmButtonAriaLabel: 'Thumbs up, great!',
+                cancelButtonText: ' Cancelar',
+                cancelButtonAriaLabel: 'Thumbs down'
+                }"
+                (confirm)="delete()"
+                (dismiss)="cancelDelete()"
+                 class="btn btn-danger light btn-md ml-auto " style="margin-right:10%;">
+                <i class="feather icon-trash"></i>Borrar
+                </button>
+            </ol>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6  col-md-6 col-xxl-5 ">
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                   
+                                    <div role="tabpanel" class="tab-pane fade show " [class.active]="i == 0" id="{{i}}" *ngFor="let image of yeoman.preview.images;let i =index;">
+                                        <img class="img-fluid" src="assets/gymove/images/product/1.jpg" alt="" *ngIf="yeoman.preview.images[0]===undefined">
+                                        <img class="img-fluid" src="{{image}}" alt="" *ngIf="image!==undefined">
+                                    </div>
+                                    
+                                   
+                                </div>
+                                <div class="tab-slide-content new-arrival-product mb-4 mb-xl-0">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav slide-item-list mt-3" role="tablist">
+                                        <li role="presentation" class="show" *ngFor="let image of yeoman.preview.images;let i =index;">
+                                            <a href="#{{i}}" role="tab" data-toggle="tab">
+                                                <img class="img-fluid" src="{{image}}" alt="" width="50">
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--Tab slider End-->
+                            <div class="col-xl-9 col-lg-6  col-md-6 col-xxl-7 col-sm-12">
+                                <div class="product-detail-content">
+                                    <!--Product details-->
+                                    <div class="new-arrival-content pr">
+                                        <h4>{{yeoman.preview.name}}</h4>
+                                        <div class="comment-review star-rating">
+                                            <!-- <ul>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star"></i></li>
+                                                <li><i class="fa fa-star-half-empty"></i></li>
+                                                <li><i class="fa fa-star-half-empty"></i></li>
+                                            </ul> -->
+                                            <!-- <span class="review-text">(34 reviews) / </span><a class="product-review" href="ecom-product-detail.html"  data-toggle="modal" data-target="#reviewModal">Write a review?</a> -->
+                                        </div>
+                                        <div class="d-table mb-2">
+                                            <p class="price float-left d-block">$ {{yeoman.preview.price}}</p>
+                                        </div>
+                                        <p>Disponibilidad:  <i class="fa fa-shopping-basket"></i>  <span class="item"> En stock{{yeoman.preview.stock}} productos
+                                           </span>
+                                        </p>
+                                        <p>Ref: <span class="item">{{yeoman.preview.referencia}}</span> </p>
+                                        <p>Categoria: <span class="item">{{yeoman.preview.category}}</span></p>
+                                      
+                                        <p class="text-content">Descripción: <span class="item">{{yeoman.preview.description}}</span></p>
+                                        <div class="filtaring-area my-3">
+                                            <div class="size-filter">
+                                                <h4 class="m-b-15">Dimensiones</h4>
+                                                
+                                                <div class="btn-group" data-toggle="buttons">
+                                                    <label class="btn btn-outline-primary light btn-sm"><input type="radio" class="position-absolute invisible" name="options" id="option5"> XS</label>
+                                                    <label class="btn btn-outline-primary light btn-sm"><input type="radio" class="position-absolute invisible" name="options" id="option1" checked>SM</label>
+                                                    <label class="btn btn-outline-primary light btn-sm"><input type="radio" class="position-absolute invisible" name="options" id="option2"> MD</label>
+                                                    <label class="btn btn-outline-primary light btn-sm"><input type="radio" class="position-absolute invisible" name="options" id="option3"> LG</label>
+                                                    <label class="btn btn-outline-primary light btn-sm"><input type="radio" class="position-absolute invisible" name="options" id="option4"> XL</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Quantity start-->
+                                        <!-- <div class="col-2 px-0">
+                                            <input type="number" name="num" class="form-control input-btn input-number" value="1">
+                                        </div> -->
+                                        <!--Quanatity End-->
+                                        <!-- <div class="shopping-cart mt-3">
+                                            <a class="btn btn-primary btn-lg" href="javascript:void(0)"><i
+                                                    class="fa fa-shopping-basket mr-2"></i>Add
+                                                to cart</a>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- review -->
+            <div class="modal fade" id="reviewModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Review</h5>
+                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="text-center mb-4">
+                                    <img class="img-fluid rounded" width="78" src="assets/gymove/images/avatar/1.jpg" alt="DexignZone">
+                                </div>
+                                <div class="form-group">
+                                    <div class="rating-widget mb-4 text-center">
+                                        <!-- Rating Stars Box -->
+                                        <div class="rating-stars">
+                                            <ul id="stars">
+                                                <li class="star" title="Poor" data-value="1">
+                                                    <i class="fa fa-star fa-fw"></i>
+                                                </li>
+                                                <li class="star" title="Fair" data-value="2">
+                                                    <i class="fa fa-star fa-fw"></i>
+                                                </li>
+                                                <li class="star" title="Good" data-value="3">
+                                                    <i class="fa fa-star fa-fw"></i>
+                                                </li>
+                                                <li class="star" title="Excellent" data-value="4">
+                                                    <i class="fa fa-star fa-fw"></i>
+                                                </li>
+                                                <li class="star" title="WOW!!!" data-value="5">
+                                                    <i class="fa fa-star fa-fw"></i>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Comment" rows="5"></textarea>
+                                </div>
+                                <button class="btn btn-success btn-block">RATE</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
