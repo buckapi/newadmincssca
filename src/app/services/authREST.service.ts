@@ -18,7 +18,7 @@ export class AuthRESTService {
 
 	//registerUser( email: string, password: string,status :string,userType :string){
 	registerUser( email: string, password: string){
-		const url_api ='https://db.buckapi.us:9010/api/Users';
+		const url_api ='https://db.corpcssca.com:9015/api/Users';
 		return this.http
 		//.post<UserInterface>(url_api,{email,password,status,userType},{headers:this.headers})
 		.post<UserInterface>(url_api,{email,password},{headers:this.headers})
@@ -55,7 +55,7 @@ export class AuthRESTService {
   		}
 	 logoutUser(){
 	  	let accessToken = localStorage.getItem('accessToken');
-		  	const url_api = 'https://db.buckapi.us:9010/api/users/logout?access_token=${accessToken}';
+		  	const url_api = 'https://db.corpcssca.com:9015/api/users/logout?access_token=${accessToken}';
 		   	localStorage.removeItem('accessToken');
 		  	localStorage.removeItem('currentUser');
 			  localStorage.removeItem('isLoggedin');
