@@ -42,7 +42,7 @@ export class AddComponent implements AfterViewInit {
     price: null,
     stock: 0,
     ref: '',
-    referencia: '',
+    modelo: '',
     idCategory: '',
   };
 
