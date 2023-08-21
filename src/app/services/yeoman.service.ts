@@ -30,7 +30,7 @@ export class Yeoman {
       GQLUrl: string;
     } = {
       name: "default",
-      restUrl: "https://db.corpcssca.com:9010",
+      restUrl: "https://db.corpcssca.com:9015",
       GQLUrl: "<origin GQL url>",
     };
     constructor() {}
