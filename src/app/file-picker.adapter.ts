@@ -16,14 +16,14 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
     console.log("holaaa");
     const form = new FormData();
     form.append('file', fileItem.file);
-    const api = 'https://db.corpcssca.com:3333/imgApi/containers/tixsImagesCcsa/upload';
+    const api = 'https://db.corpcssca.com:3333/api/containers/corpcssca/upload';
     const req = new HttpRequest('POST', api, form, {reportProgress: false});
     return this.http.request(req)
     .pipe(
       map( (res: HttpEvent<any>) => {
           if (res.type === HttpEventType.Response) {
             this._butler.newImage=true;
-          this._butler.uploaderImages.push('https://db.corpcssca.com/imgApi/server/local-storage/tixsImagesCcsa/'+res.body.result.files.file[0].name);
+          this._butler.uploaderImages.push('https://db.corpcssca.com/api/server/local-storage/corpcssca/'+res.body.result.files.file[0].name);
           this._butler.newUploaderImage=true;
           return res.body.id.toString();
         } else if (res.type ===  HttpEventType.UploadProgress && res.total  !== undefined) {
@@ -36,7 +36,7 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
   }
   public removeFile(fileItem: any): Observable<any> {
     console.log(fileItem);
-    const removeApi = 'https://db.corpcssca.com/imgApi/containers/tixsImagesCcsa/' + fileItem.id;
+    const removeApi = 'https://db.corpcssca.com/api/containers/corpcssca/' + fileItem.id;
     return this.http.delete(removeApi);
   }
 }
